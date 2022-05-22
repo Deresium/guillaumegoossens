@@ -1,0 +1,108 @@
+<template>
+    <header>
+        <div class="headerPhone">
+            <GgLogo/>
+            <img class="menuIcon" src="../../assets/icons/menu.svg" alt="menu icon"/>
+        </div>
+        <div class="headerDesktop">
+            <GgLogo/>
+            <div class="menuLinks">
+                <router-link :to="{name: 'artist'}">Artiste</router-link>
+                <router-link :to="{name: 'diary'}">Agenda</router-link>
+                <router-link :to="{name: 'music'}">Musique</router-link>
+                <router-link :to="{name: 'gallery'}">Galerie</router-link>
+                <router-link :to="{name: 'contact'}">Contact</router-link>
+            </div>
+            <div class="menuMedia">
+                <a target="_blank" rel="noopener"
+                   href="https://open.spotify.com/artist/6SzrU2vncO3th26VYZBbBa?si=AQK2sgYSRNCatRueFsvwkQ">
+                    <img src="../../assets/icons/spotify.svg" alt="spotify icon"/>
+                </a>
+                <a target="_blank" rel="noopener"
+                   href="https://www.youtube.com/channel/UCST7yA48BwRuvpUAfSxUxSQ">
+                    <img src="../../assets/icons/youtube.svg" alt="youtube icon"/>
+                </a>
+                <a target="_blank" rel="noopener"
+                   href="https://www.facebook.com/GuillaumeGoossensMusique">
+                    <img src="../../assets/icons/facebook.svg" alt="facebook icon"/>
+                </a>
+                <a target="_blank" rel="noopener"
+                   href="https://www.instagram.com/guillaume_goossens_musique/">
+                    <img src="../../assets/icons/instagram.svg" alt="instagram icon"/>
+                </a>
+            </div>
+        </div>
+    </header>
+</template>
+
+<script setup lang="ts">
+import GgLogo from "./GgLogo.vue";
+</script>
+
+<style scoped>
+header {
+    background-color: #242424;
+    margin: 0;
+    padding: 10px;
+}
+
+.headerPhone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerDesktop {
+    display: none;
+}
+
+.menuIcon {
+    width: 35px;
+    height: 35px;
+}
+
+@media (min-width: 1000px) {
+    .headerPhone {
+        display: none;
+    }
+
+    .headerDesktop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menuLinks {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .menuLinks a {
+        font-weight: 300;
+        font-size: x-large;
+        color: white;
+        text-decoration: none;
+    }
+
+    .menuMedia {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menuMedia a {
+        display: block;
+    }
+
+    .menuMedia a {
+        margin-right: 10px;
+    }
+
+    .menuMedia img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+</style>
