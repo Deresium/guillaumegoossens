@@ -1,11 +1,14 @@
+import {RouteRecordRaw} from "vue-router";
 import GgHome from "../views/GgHome.vue";
 import GgArtist from "../views/GgArtist.vue";
 import GgContact from "../views/GgContact.vue";
 import GgDiary from "../views/GgDiary.vue";
 import GgGallery from "../views/GgGallery.vue";
 import GgMusic from "../views/GgMusic.vue";
+import GgSpotifyMusic from "../views/music/GgSpotifyMusic.vue";
+import GgYoutubeMusic from "../views/music/GgYoutubeMusic.vue";
 
-export default [
+export const routes:Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'home',
@@ -40,6 +43,27 @@ export default [
         path: '/musique',
         name: 'music',
         component: GgMusic,
-        meta: {title: 'Guillaume Goossens - Musique'}
+        meta: {title: 'Guillaume Goossens - Musique'},
+        children: [
+            {
+                path: '',
+                redirect: to => {
+                    return {name: 'spotifyMusic'}
+                }
+            },
+            {
+                path: 'spotify',
+                name: 'spotifyMusic',
+                component: GgSpotifyMusic,
+                meta: {title: 'Guillaume Goossens - Musique Spotify'}
+            },
+            {
+                path: 'youtube',
+                name: 'youtubeMusic',
+                component: GgYoutubeMusic,
+                meta: {title: 'Guillaume Goossens - Musique Youtube'}
+            }
+        ]
+
     }
-]
+];

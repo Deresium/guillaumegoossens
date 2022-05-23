@@ -2,14 +2,16 @@
     <header>
         <div class="headerPhone">
             <GgLogo/>
-            <img class="menuIcon" src="../../assets/icons/menu.svg" alt="menu icon"/>
+            <button class="hamburgerButton" @click="showFullMenu=true">
+                <img class="menuIcon" src="../../assets/icons/menu.svg" alt="menu icon"/>
+            </button>
         </div>
         <div class="headerDesktop">
             <GgLogo/>
             <div class="menuLinks">
                 <router-link :to="{name: 'artist'}">Artiste</router-link>
                 <router-link :to="{name: 'diary'}">Agenda</router-link>
-                <router-link :to="{name: 'music'}">Musique</router-link>
+                <router-link :to="{name: 'spotifyMusic'}">Musique</router-link>
                 <router-link :to="{name: 'gallery'}">Galerie</router-link>
                 <router-link :to="{name: 'contact'}">Contact</router-link>
             </div>
@@ -32,11 +34,18 @@
                 </a>
             </div>
         </div>
+        <GgFullMenu v-model="showFullMenu"/>
     </header>
 </template>
 
 <script setup lang="ts">
 import GgLogo from "./GgLogo.vue";
+import {ref} from "vue";
+import GgFullMenu from "./GgFullMenu.vue";
+
+const showFullMenu = ref(false);
+
+
 </script>
 
 <style scoped>
@@ -59,6 +68,11 @@ header {
 .menuIcon {
     width: 35px;
     height: 35px;
+}
+
+.hamburgerButton{
+    background-color: transparent;
+    border: none;
 }
 
 @media (min-width: 1000px) {
