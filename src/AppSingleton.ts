@@ -4,6 +4,9 @@ import AllowLocalhostMiddleware from "./middlewares/AllowLocahostMiddleware";
 import path from "path";
 import ReturnIndexMiddleware from "./middlewares/ReturnIndexMiddleware";
 import DatabaseConnectionMapper from "./database/datamappers/DatabaseConnectionMapper";
+import LoginRouter from "./routers/LoginRouter";
+import LoginFacade from "./business/facades/LoginFacade";
+import UserDataMapper from "./database/datamappers/UserDataMapper";
 
 export default class AppSingleton {
     private static instance: AppSingleton;
@@ -42,6 +45,8 @@ export default class AppSingleton {
 
         const databaseConnectionGateway = new DatabaseConnectionMapper();
         databaseConnectionGateway.testConnect();
+
+        this.expressApp.use('/api', new LoginRouter(new LoginFacade(new UserDataMapper())).getRouter());
 
 
     }

@@ -9,6 +9,9 @@ const AllowLocahostMiddleware_1 = __importDefault(require("./middlewares/AllowLo
 const path_1 = __importDefault(require("path"));
 const ReturnIndexMiddleware_1 = __importDefault(require("./middlewares/ReturnIndexMiddleware"));
 const DatabaseConnectionMapper_1 = __importDefault(require("./database/datamappers/DatabaseConnectionMapper"));
+const LoginRouter_1 = __importDefault(require("./routers/LoginRouter"));
+const LoginFacade_1 = __importDefault(require("./business/facades/LoginFacade"));
+const UserDataMapper_1 = __importDefault(require("./database/datamappers/UserDataMapper"));
 class AppSingleton {
     constructor() {
         this.expressApp = (0, express_1.default)();
@@ -36,6 +39,7 @@ class AppSingleton {
         this.expressApp.use(express_1.default.json());
         const databaseConnectionGateway = new DatabaseConnectionMapper_1.default();
         databaseConnectionGateway.testConnect();
+        this.expressApp.use('/api', new LoginRouter_1.default(new LoginFacade_1.default(new UserDataMapper_1.default())).getRouter());
     }
 }
 exports.default = AppSingleton;

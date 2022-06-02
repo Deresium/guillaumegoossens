@@ -7,6 +7,7 @@ import GgGallery from "../views/GgGallery.vue";
 import GgMusic from "../views/GgMusic.vue";
 import GgSpotifyMusic from "../views/music/GgSpotifyMusic.vue";
 import GgYoutubeMusic from "../views/music/GgYoutubeMusic.vue";
+import GgAdmin from "../views/admin/GgAdmin.vue";
 
 export const routes:Array<RouteRecordRaw> = [
     {
@@ -64,6 +65,10 @@ export const routes:Array<RouteRecordRaw> = [
                 meta: {title: 'Guillaume Goossens - Musique Youtube'}
             }
         ]
-
+    },
+    {
+        path: '/admin',
+        name: 'admin',
+        component: GgAdmin
     }
 ];

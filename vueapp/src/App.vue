@@ -11,6 +11,9 @@
 <script setup lang="ts">
 import GgHeader from "./components/header/GgHeader.vue";
 import GgFooter from "./components/footer/GgFooter.vue";
+import DecryptCookie from "./DecryptCookie";
+
+new DecryptCookie().tryLoginUser();
 </script>
 
 

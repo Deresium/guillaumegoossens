@@ -11,5 +11,7 @@ declare namespace NodeJS{
         AWS_KEY_SECRET: string;
         AWS_BUCKET_NAME: string;
         JWT_SECRET: string;
+        GOOGLE_ID: string;
+        GOOGLE_SECRET: string;
     }
 }

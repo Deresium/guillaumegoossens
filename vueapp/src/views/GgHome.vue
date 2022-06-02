@@ -107,7 +107,7 @@ h1{
     }
 }
 
-@media (min-width: 1600px) {
+@media (min-width: 730px) {
     .topTitle h1{
         display: none;
     }

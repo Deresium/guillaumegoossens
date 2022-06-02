@@ -1,0 +1,1 @@
+{"version":3,"file":"ApplicationRouter.js","sourceRoot":"","sources":["../../src/routers/ApplicationRouter.ts"],"names":[],"mappings":";;AAAA,qCAA+B;AAE/B,MAA8B,iBAAiB;IAG3C;QACI,IAAI,CAAC,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;QACvB,IAAI,CAAC,UAAU,EAAE,CAAC;IACtB,CAAC;IAED,SAAS;QACL,OAAO,IAAI,CAAC,MAAM,CAAC;IACvB,CAAC;CAGJ;AAbD,oCAaC"}
