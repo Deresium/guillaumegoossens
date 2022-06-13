@@ -85,7 +85,7 @@ module.exports = {
                   },
                   type: {
                       type: Sequelize.STRING(32),
-                      allowNull: false
+                      allowNull: true
                   },
                   date: {
                       type: Sequelize.DATE,
@@ -119,6 +119,14 @@ module.exports = {
                       type: Sequelize.BOOLEAN,
                       allowNull: false
                   },
+                  favorite: {
+                      type: Sequelize.BOOLEAN,
+                      allowNull: false
+                  },
+                  showEvent: {
+                      type: Sequelize.BOOLEAN,
+                      allowNull: false
+                  },
                   createdAt: {
                       type: Sequelize.DATE
                   },
@@ -132,6 +140,10 @@ module.exports = {
                       type: Sequelize.INTEGER,
                       primaryKey: true,
                       autoIncrement: true
+                  },
+                  order: {
+                      type: Sequelize.INTEGER,
+                      allowNull: false
                   },
                   createdAt: {
                       type: Sequelize.DATE

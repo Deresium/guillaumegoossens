@@ -8,6 +8,9 @@ import GgMusic from "../views/GgMusic.vue";
 import GgSpotifyMusic from "../views/music/GgSpotifyMusic.vue";
 import GgYoutubeMusic from "../views/music/GgYoutubeMusic.vue";
 import GgAdmin from "../views/admin/GgAdmin.vue";
+import GgAdminEvent from "../views/admin/GgAdminEvent.vue";
+import GgAdminPicture from "../views/admin/GgAdminPicture.vue";
+import GgAdminEventForm from "../views/admin/GgAdminEventForm.vue";
 
 export const routes:Array<RouteRecordRaw> = [
     {
@@ -48,7 +51,7 @@ export const routes:Array<RouteRecordRaw> = [
         children: [
             {
                 path: '',
-                redirect: to => {
+                redirect: () => {
                     return {name: 'spotifyMusic'}
                 }
             },
@@ -69,6 +72,33 @@ export const routes:Array<RouteRecordRaw> = [
     {
         path: '/admin',
         name: 'admin',
-        component: GgAdmin
+        component: GgAdmin,
+        meta: {title: 'Guillaume Goossens - Admin'},
+        children: [
+            {
+                path: '',
+                redirect: () => {
+                    return {name: 'adminEvent'}
+                }
+            },
+            {
+                path: 'event',
+                name: 'adminEvent',
+                component: GgAdminEvent,
+                meta: {title: 'Guillaume Goossens - Admin Event'}
+            },
+            {
+                path: 'picture',
+                name: 'adminPicture',
+                component: GgAdminPicture,
+                meta: {title: 'Guillaume Goossens - Admin Picture'}
+            },
+            {
+                path: 'event/:eventId',
+                name: 'adminEventForm',
+                component: GgAdminEventForm,
+                meta: {title: 'Guillaume Goossens - Admin Event'}
+            }
+        ]
     }
 ];

@@ -14,18 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const EventEntity_1 = __importDefault(require("../entities/EventEntity"));
 class EventDataMapper {
-    addEvent(event) {
+    addEvent() {
         return __awaiter(this, void 0, void 0, function* () {
-            yield EventEntity_1.default.create({
-                type: event.getType(),
-                date: event.getDate(),
-                label: event.getLabel(),
-                description: event.getDescription(),
-                street: event.getStreet(),
-                zipCode: event.getZipCode(),
-                town: event.getTown(),
-                website: event.getWebsite(),
-                picture: event.getPicture()
+            return yield EventEntity_1.default.create({
+                picture: false,
+                favorite: false,
+                showEvent: false
             });
         });
     }
@@ -59,10 +53,22 @@ class EventDataMapper {
                 zipCode: event.getZipCode(),
                 town: event.getTown(),
                 website: event.getWebsite(),
-                picture: event.getPicture()
+                picture: event.getPicture(),
+                favorite: event.getFavorite()
             }, {
                 where: {
                     eventId: event.getEventId()
+                }
+            });
+        });
+    }
+    updateEventPicture(eventId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield EventEntity_1.default.update({
+                picture: true
+            }, {
+                where: {
+                    eventId: eventId
                 }
             });
         });

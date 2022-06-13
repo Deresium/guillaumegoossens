@@ -42,12 +42,23 @@ body {
     color: white;
 }
 
+input, option, textarea, select{
+    color: black;
+}
+
 .desktop {
     display: none;
 }
 
 h1 {
     font-family: 'Merriweather', serif;
+}
+
+button{
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 @media (min-width: 900px) {

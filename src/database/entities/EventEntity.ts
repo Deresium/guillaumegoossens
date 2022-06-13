@@ -12,6 +12,56 @@ export default class EventEntity extends Model{
     private town: string;
     private website: string;
     private picture: boolean;
+    private favorite: boolean;
+    private showEvent: boolean;
+
+    public getEventId(){
+        return this.eventId;
+    }
+
+    public getType(){
+        return this.type;
+    }
+
+    public getDate(){
+        return this.date;
+    }
+
+    public getLabel(){
+        return this.label;
+    }
+
+    public getDescription(){
+        return this.description;
+    }
+
+    public getStreet(){
+        return this.street;
+    }
+
+    public getZipCode(){
+        return this.zipCode;
+    }
+
+    public getTown(){
+        return this.town;
+    }
+
+    public getWebsite(){
+        return this.website;
+    }
+
+    public getPicture(){
+        return this.picture;
+    }
+
+    public getFavorite(){
+        return this.favorite;
+    }
+
+    public getShowEvent(){
+        return this.showEvent;
+    }
 }
 
 EventEntity.init({
@@ -22,7 +72,7 @@ EventEntity.init({
     },
     type: {
         type: DataTypes.STRING(32),
-        allowNull: false
+        allowNull: true
     },
     date: {
         type: DataTypes.DATE,
@@ -53,6 +103,14 @@ EventEntity.init({
         allowNull: true
     },
     picture: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    favorite: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    showEvent: {
         type: DataTypes.BOOLEAN,
         allowNull: false
     }

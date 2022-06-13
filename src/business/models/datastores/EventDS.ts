@@ -9,8 +9,10 @@ export default class EventDS{
     private readonly town: string;
     private readonly website: string;
     private readonly picture: boolean;
+    private readonly favorite: boolean;
+    private readonly showEvent: boolean;
 
-    constructor(eventId: number, type: string, date: Date, label: string, description: string, street: string, zipCode: string, town: string, website: string, picture: boolean) {
+    constructor(eventId: number, type: string, date: Date, label: string, description: string, street: string, zipCode: string, town: string, website: string, picture: boolean, favorite: boolean, showEvent: boolean) {
         this.eventId = eventId;
         this.type = type;
         this.date = date;
@@ -21,6 +23,8 @@ export default class EventDS{
         this.town = town;
         this.website = website;
         this.picture = picture;
+        this.favorite = favorite;
+        this.showEvent = showEvent;
     }
 
     public getEventId(){
@@ -61,5 +65,13 @@ export default class EventDS{
 
     public getPicture(){
         return this.picture;
+    }
+
+    public getFavorite(){
+        return this.favorite;
+    }
+
+    public getShowEvent(){
+        return this.showEvent;
     }
 }

@@ -7,6 +7,13 @@ import DatabaseConnectionMapper from "./database/datamappers/DatabaseConnectionM
 import LoginRouter from "./routers/LoginRouter";
 import LoginFacade from "./business/facades/LoginFacade";
 import UserDataMapper from "./database/datamappers/UserDataMapper";
+import EventRouter from "./routers/EventRouter";
+import EventFacade from "./business/facades/EventFacade";
+import EventDataMapper from "./database/datamappers/EventDataMapper";
+import ExtractTokenMiddleware from "./middlewares/ExtractTokenMiddleware";
+import PublicFilesRouter from "./routers/PublicFilesRouter";
+import AwsFileDataMapper from "./external/aws/files/AwsFileDataMapper";
+import AwsOperations from "./external/aws/files/AwsOperations";
 
 export default class AppSingleton {
     private static instance: AppSingleton;
@@ -41,12 +48,20 @@ export default class AppSingleton {
 
         this.expressApp.use(new ReturnIndexMiddleware().getRequestHandler());
 
+        const eventFacade = new EventFacade(new EventDataMapper(), new AwsFileDataMapper(new AwsOperations()));
+
+
+        this.expressApp.use('/api', new PublicFilesRouter(eventFacade).getRouter());
+
         this.expressApp.use(express.json());
 
         const databaseConnectionGateway = new DatabaseConnectionMapper();
         databaseConnectionGateway.testConnect();
 
+        this.expressApp.use(new ExtractTokenMiddleware().getRequestHandler());
+
         this.expressApp.use('/api', new LoginRouter(new LoginFacade(new UserDataMapper())).getRouter());
+        this.expressApp.use('/api', new EventRouter(eventFacade).getRouter());
 
 
     }

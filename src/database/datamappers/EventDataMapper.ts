@@ -3,17 +3,11 @@ import EventEntity from "../entities/EventEntity";
 import EventDS from "../../business/models/datastores/EventDS";
 
 export default class EventDataMapper implements IEventDataGateway{
-    public async addEvent(event: EventDS) {
-        await EventEntity.create({
-            type: event.getType(),
-            date: event.getDate(),
-            label: event.getLabel(),
-            description: event.getDescription(),
-            street: event.getStreet(),
-            zipCode: event.getZipCode(),
-            town: event.getTown(),
-            website: event.getWebsite(),
-            picture: event.getPicture()
+    public async addEvent(): Promise<EventEntity> {
+        return await EventEntity.create({
+            picture: false,
+            favorite: false,
+            showEvent: false
         });
     }
 
@@ -43,7 +37,8 @@ export default class EventDataMapper implements IEventDataGateway{
             zipCode: event.getZipCode(),
             town: event.getTown(),
             website: event.getWebsite(),
-            picture: event.getPicture()
+            picture: event.getPicture(),
+            favorite: event.getFavorite()
         },{
             where:{
                 eventId: event.getEventId()
@@ -51,4 +46,13 @@ export default class EventDataMapper implements IEventDataGateway{
         });
     }
 
+    async updateEventPicture(eventId: number): Promise<void> {
+        await EventEntity.update({
+            picture: true
+        },{
+            where: {
+                eventId: eventId
+            }
+        });
+    }
 }

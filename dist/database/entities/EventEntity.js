@@ -6,6 +6,42 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const DatabaseSingleton_1 = __importDefault(require("../DatabaseSingleton"));
 class EventEntity extends sequelize_1.Model {
+    getEventId() {
+        return this.eventId;
+    }
+    getType() {
+        return this.type;
+    }
+    getDate() {
+        return this.date;
+    }
+    getLabel() {
+        return this.label;
+    }
+    getDescription() {
+        return this.description;
+    }
+    getStreet() {
+        return this.street;
+    }
+    getZipCode() {
+        return this.zipCode;
+    }
+    getTown() {
+        return this.town;
+    }
+    getWebsite() {
+        return this.website;
+    }
+    getPicture() {
+        return this.picture;
+    }
+    getFavorite() {
+        return this.favorite;
+    }
+    getShowEvent() {
+        return this.showEvent;
+    }
 }
 exports.default = EventEntity;
 EventEntity.init({
@@ -16,7 +52,7 @@ EventEntity.init({
     },
     type: {
         type: sequelize_1.DataTypes.STRING(32),
-        allowNull: false
+        allowNull: true
     },
     date: {
         type: sequelize_1.DataTypes.DATE,
@@ -47,6 +83,14 @@ EventEntity.init({
         allowNull: true
     },
     picture: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    favorite: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    showEvent: {
         type: sequelize_1.DataTypes.BOOLEAN,
         allowNull: false
     }
