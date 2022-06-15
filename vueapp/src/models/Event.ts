@@ -43,8 +43,22 @@ export default class Event{
         return this.description;
     }
 
+    public affichDescription(){
+        if(this.description){
+            return this.description;
+        }
+        return "Aucune description";
+    }
+
     public getLabel(){
         return this.label;
+    }
+
+    public affichLabel(){
+        if(this.label){
+            return this.label;
+        }
+        return "Aucun nom";
     }
 
     public getStreet(){

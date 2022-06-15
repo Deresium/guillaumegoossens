@@ -19,8 +19,16 @@ export default class EventDataMapper implements IEventDataGateway{
         });
     }
 
-    async getAllEvents(): Promise<Array<EventEntity>> {
-        return await EventEntity.findAll();
+    async getAllEvents(showAll: boolean): Promise<Array<EventEntity>> {
+        if(showAll){
+            return await EventEntity.findAll();
+        }
+
+        return await EventEntity.findAll({
+            where: {
+                showEvent: true
+            }
+        })
     }
 
     async getEvent(eventId: number): Promise<EventEntity> {
@@ -37,7 +45,6 @@ export default class EventDataMapper implements IEventDataGateway{
             zipCode: event.getZipCode(),
             town: event.getTown(),
             website: event.getWebsite(),
-            picture: event.getPicture(),
             favorite: event.getFavorite()
         },{
             where:{

@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ApplicationRouter_1 = __importDefault(require("./ApplicationRouter"));
 const OnlyAdminMiddleware_1 = __importDefault(require("../middlewares/OnlyAdminMiddleware"));
 const multer_1 = __importDefault(require("multer"));
+const EventDS_1 = __importDefault(require("../business/models/datastores/EventDS"));
 class EventRouter extends ApplicationRouter_1.default {
     constructor(eventRequester) {
         super();
@@ -24,6 +25,17 @@ class EventRouter extends ApplicationRouter_1.default {
         this.getRouter().post('/event', new OnlyAdminMiddleware_1.default().getRequestHandler(), (req, res) => __awaiter(this, void 0, void 0, function* () {
             const event = yield this.eventRequester.addEvent();
             res.status(200).send(event);
+        }));
+        this.getRouter().put('/event', new OnlyAdminMiddleware_1.default().getRequestHandler(), (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const event = req.body.event;
+            const eventDS = new EventDS_1.default(event.eventId, event.type, event.date, event.label, event.description, event.street, event.zipCode, event.town, event.website, event.picture, event.favorite, event.showEvent);
+            yield this.eventRequester.updateEvent(eventDS);
+            res.status(200).send();
+        }));
+        this.getRouter().get('/events', (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const showAll = req.query.showAll;
+            const events = yield this.eventRequester.getAllEvents(showAll);
+            res.status(200).send(events);
         }));
         const upload = (0, multer_1.default)();
         this.getRouter().post('/event/:eventId/image', new OnlyAdminMiddleware_1.default().getRequestHandler(), upload.single('file'), (req, res) => __awaiter(this, void 0, void 0, function* () {

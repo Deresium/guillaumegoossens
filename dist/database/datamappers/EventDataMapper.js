@@ -32,9 +32,16 @@ class EventDataMapper {
             });
         });
     }
-    getAllEvents() {
+    getAllEvents(showAll) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield EventEntity_1.default.findAll();
+            if (showAll) {
+                return yield EventEntity_1.default.findAll();
+            }
+            return yield EventEntity_1.default.findAll({
+                where: {
+                    showEvent: true
+                }
+            });
         });
     }
     getEvent(eventId) {
@@ -53,7 +60,6 @@ class EventDataMapper {
                 zipCode: event.getZipCode(),
                 town: event.getTown(),
                 website: event.getWebsite(),
-                picture: event.getPicture(),
                 favorite: event.getFavorite()
             }, {
                 where: {

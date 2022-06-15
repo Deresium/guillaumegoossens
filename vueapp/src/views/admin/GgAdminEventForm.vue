@@ -1,6 +1,6 @@
 <template>
     <h2>Ajouter un évènement</h2>
-    <form @submit="commitEvent" novalidate="novalidate">
+    <form @submit.prevent="commitEvent" novalidate="novalidate">
         <label>
             <span>Type</span>
             <select v-model="selectedType">
@@ -26,6 +26,8 @@
         </label>
         <label>Photo</label>
         <GgDropImg :event-id="eventId"/>
+
+        <button type="submit">Sauver les modifications</button>
     </form>
 </template>
 
@@ -33,10 +35,12 @@
 import {computed, ref} from "vue";
 import {useRoute} from "vue-router";
 import GgDropImg from "./GgDropImg.vue";
+import Event from "../../models/Event";
+import axiosServer from "../../axios/axiosServer";
 
 const {params} = useRoute();
 
-const eventId = computed((): number|null => {
+const eventId = computed((): number => {
     if(typeof params.eventId === 'string'){
         return parseInt(params.eventId);
     }
@@ -51,11 +55,12 @@ const street = ref("");
 const zipCode = ref("");
 const town = ref("");
 const website = ref("");
-const picture = ref(false);
 const favorite = ref(false);
+const showEvent = ref(false);
 
-const commitEvent = () => {
-
+const commitEvent = async() => {
+    const event = new Event(eventId.value, selectedType.value, selectedDate.value, label.value, description.value, street.value, zipCode.value, town.value, website.value, false, favorite.value, showEvent.value);
+    await axiosServer.put('/event', {event});
 }
 </script>
 

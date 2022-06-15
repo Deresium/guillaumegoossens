@@ -6,6 +6,6 @@ export default interface IEventDataGateway{
     deleteEvent(eventId: number): Promise<void>;
     updateEvent(event: EventDS): Promise<void>;
     getEvent(eventId: number): Promise<EventEntity>;
-    getAllEvents(): Promise<Array<EventEntity>>;
+    getAllEvents(showAll: boolean): Promise<Array<EventEntity>>;
     updateEventPicture(eventId: number): Promise<void>;
 }

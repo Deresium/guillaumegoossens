@@ -22,8 +22,8 @@ export default class EventFacade implements IEventRequester {
         await this.eventDataGateway.deleteEvent(eventId);
     }
 
-    async getAllEvents(): Promise<Array<EventDS>> {
-        const events = await this.eventDataGateway.getAllEvents();
+    async getAllEvents(showAll: boolean): Promise<Array<EventDS>> {
+        const events = await this.eventDataGateway.getAllEvents(showAll);
         const eventsDS = new Array<EventDS>();
         for (const event of events) {
             eventsDS.push(EventFacade.parseEventToEventDS(event));
@@ -52,7 +52,11 @@ export default class EventFacade implements IEventRequester {
     }
 
     async getEventPicture(eventId: number): Promise<any> {
-        return await this.fileDataGateway.getEventPicture(eventId);
+        const event = await this.eventDataGateway.getEvent(eventId);
+        if(event && event.getPicture()) {
+            return await this.fileDataGateway.getEventPicture(eventId);
+        }
+        return null;
     }
 
     async deleteEventPicture(eventId: number): Promise<void> {

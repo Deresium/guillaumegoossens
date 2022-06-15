@@ -29,9 +29,9 @@ class EventFacade {
             yield this.eventDataGateway.deleteEvent(eventId);
         });
     }
-    getAllEvents() {
+    getAllEvents(showAll) {
         return __awaiter(this, void 0, void 0, function* () {
-            const events = yield this.eventDataGateway.getAllEvents();
+            const events = yield this.eventDataGateway.getAllEvents(showAll);
             const eventsDS = new Array();
             for (const event of events) {
                 eventsDS.push(EventFacade.parseEventToEventDS(event));
@@ -63,7 +63,11 @@ class EventFacade {
     }
     getEventPicture(eventId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.fileDataGateway.getEventPicture(eventId);
+            const event = yield this.eventDataGateway.getEvent(eventId);
+            if (event && event.getPicture()) {
+                return yield this.fileDataGateway.getEventPicture(eventId);
+            }
+            return null;
         });
     }
     deleteEventPicture(eventId) {

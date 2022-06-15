@@ -24,6 +24,10 @@
 </script>
 
 <style scoped>
+.home{
+    margin-bottom: 30px;
+}
+
 .topTitle {
     position: relative;
     width: 100%;
@@ -79,7 +83,7 @@ h1{
     display: block;
     text-decoration: none;
     padding: 20px;
-    width: 30%;
+    width: 70%;
     border: white 1px solid;
     text-align: center;
     font-size: x-large;
@@ -97,17 +101,25 @@ h1{
 
 @media (min-width: 500px) {
     .topTitle h1 {
-        font-size: 54px;
+        font-size: 60px;
     }
 }
 
-@media (min-width: 730px) {
-    .topTitle h1 {
-        font-size: 72px;
+@media(min-width: 730px){
+    .topTitle h1{
+        font-size: 90px;
+    }
+
+    .guillaumePic{
+        width: 75%;
+    }
+
+    .quote{
+        font-size: xx-large;
     }
 }
 
-@media (min-width: 730px) {
+@media (min-width: 1400px) {
     .topTitle h1{
         display: none;
     }

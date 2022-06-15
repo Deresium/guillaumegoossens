@@ -2,6 +2,7 @@ import ApplicationRouter from "./ApplicationRouter";
 import IEventRequester from "../business/requesters/IEventRequester";
 import OnlyAdminMiddleware from "../middlewares/OnlyAdminMiddleware";
 import multer from "multer";
+import EventDS from "../business/models/datastores/EventDS";
 
 export default class EventRouter extends ApplicationRouter{
     private readonly eventRequester: IEventRequester;
@@ -15,6 +16,19 @@ export default class EventRouter extends ApplicationRouter{
         this.getRouter().post('/event', new OnlyAdminMiddleware().getRequestHandler(), async(req, res) => {
             const event = await this.eventRequester.addEvent();
             res.status(200).send(event);
+        });
+
+        this.getRouter().put('/event', new OnlyAdminMiddleware().getRequestHandler(), async(req, res) => {
+            const event = req.body.event;
+            const eventDS = new EventDS(event.eventId, event.type, event.date, event.label, event.description, event.street, event.zipCode, event.town, event.website, event.picture, event.favorite, event.showEvent);
+            await this.eventRequester.updateEvent(eventDS);
+            res.status(200).send();
+        });
+
+        this.getRouter().get('/events', async(req, res) => {
+            const showAll = req.query.showAll;
+            const events = await this.eventRequester.getAllEvents(showAll);
+            res.status(200).send(events);
         });
 
 
