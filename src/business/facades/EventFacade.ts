@@ -30,15 +30,15 @@ export default class EventFacade implements IEventRequester {
         }
         return eventsDS.sort((event1, event2) => {
             if (event1.getFavorite() && !event2.getFavorite()) {
-                return 1;
-            }
-            if (!event1.getFavorite() && event2.getFavorite()) {
                 return -1;
             }
-            if (event1.getDate() > event2.getDate()) {
+            if (!event1.getFavorite() && event2.getFavorite()) {
                 return 1;
             }
-            return -1;
+            if (event1.getDate() > event2.getDate()) {
+                return -1;
+            }
+            return 1;
         });
     }
 

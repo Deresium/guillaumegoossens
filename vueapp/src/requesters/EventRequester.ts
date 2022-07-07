@@ -7,4 +7,9 @@ export default class EventRequester{
         const events = await axiosServer.get('/events', {params: {showAll}});
         return EventParser.parseEvents(events.data);
     }
+
+    public static async getEventById(eventId: number): Promise<Event> {
+        const response = await axiosServer.get(`/event/${eventId}`);
+        return EventParser.parseEvent(response.data);
+    }
 }

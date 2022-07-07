@@ -1,10 +1,9 @@
 import {Router} from "express";
 
 export default abstract class ApplicationRouter{
-    private readonly router;
+    private readonly router = Router();
 
     protected constructor() {
-        this.router = Router();
         this.initRoutes();
     }
 

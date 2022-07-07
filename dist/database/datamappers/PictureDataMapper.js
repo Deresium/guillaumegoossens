@@ -35,12 +35,6 @@ class PictureDataMapper {
     getAllPictures() {
         return __awaiter(this, void 0, void 0, function* () {
             return yield PictureEntity_1.default.findAll();
-            /*return pictures.sort((p1, p2) => {
-                if(p1.getOrder() > p2.getOrder()){
-                    return 1;
-                }
-                return -1;
-            });*/
         });
     }
     updatePicturesOrder(pictures) {

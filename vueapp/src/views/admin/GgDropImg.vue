@@ -7,7 +7,8 @@
             @change="onChangeFile"
         />
 
-        <img :class="insideInputStyle" class="imgProduct" :src="getSrcImg" alt="product img"/>
+        <img v-if="isEventDropImg" :class="insideInputStyle" class="imgProduct" :src="getSrcImg" alt="product img"/>
+        <span v-if="isPictureDropImg" :class="insideInputStyle" class="dropPicture"/>
     </label>
 </template>
 
@@ -19,9 +20,15 @@ import axiosServer from "../../axios/axiosServer";
 const props = defineProps({
     eventId: {
         type: Number,
+        required: false
+    },
+    dropImgType: {
+        type: String,
         required: true
     }
 });
+
+const emit = defineEmits(['imageSent']);
 
 const acceptTab = new Array<string>();
 acceptTab.push('image/*');
@@ -57,18 +64,42 @@ const sendImageToServer = async (file: File) => {
     try {
         const formData = new FormData();
         formData.append('file', file, file.name);
-        const response = await axiosServer.post(`/event/${props.eventId}/image`, formData, {
+        await axiosServer.post(getUrlPost.value, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
         counterForReload.value++;
+        emit('imageSent');
     } catch (error) {
         alert('Une erreur est survenue');
     }
 };
 
-const getSrcImg = computed(() => `${import.meta.env.VITE_APP_URL_SERVER}/api/event/${props.eventId}/image?counter=${counterForReload.value}`);
+const getSrcImg = computed(() => {
+    if(isEventDropImg.value){
+        return `${import.meta.env.VITE_APP_URL_SERVER}/api/event/${props.eventId}/image?counter=${counterForReload.value}`
+    }
+    return null;
+
+});
+
+const getUrlPost = computed(() => {
+    if(isEventDropImg.value){
+        return `/event/${props.eventId}/image`;
+    }else if(isPictureDropImg.value){
+        return '/picture';
+    }
+    return null;
+});
+
+const isEventDropImg = computed(() => {
+    return props.dropImgType === 'EVENT';
+});
+
+const isPictureDropImg = computed(() => {
+    return props.dropImgType === 'PICTURE';
+});
 
 const insideInputStyle = computed(() => ({
     'isHoverStyle': isHover.value
@@ -87,8 +118,14 @@ input {
     display: none;
 }
 
-.isHoverStyle {
+img.isHoverStyle, span.isHoverStyle {
     border: solid 5px white;
+}
+
+.dropPicture{
+    display: block;
+    height: 200px;
+    border: solid 1px #242424;
 }
 
 </style>

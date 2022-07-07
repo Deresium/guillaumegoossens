@@ -21,7 +21,8 @@ new DecryptCookie().tryLoginUser();
 body {
     margin: 0;
     padding: 0;
-    background-color: #636363;
+    /*background-color: #636363;*/
+    background-color: black;
     position: relative;
 }
 
@@ -42,8 +43,11 @@ body {
     color: white;
 }
 
-input, option, textarea, select{
-    color: black;
+
+input, textarea, select{
+    background-color: #636363;
+    border: white 1px solid;
+    color: white;
 }
 
 .desktop {
@@ -59,6 +63,7 @@ button{
     border: 1px solid white;
     border-radius: 5px;
     padding: 5px;
+    cursor: pointer;
 }
 
 @media (min-width: 900px) {

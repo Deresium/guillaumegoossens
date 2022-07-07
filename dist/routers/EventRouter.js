@@ -32,10 +32,20 @@ class EventRouter extends ApplicationRouter_1.default {
             yield this.eventRequester.updateEvent(eventDS);
             res.status(200).send();
         }));
+        this.getRouter().delete('/event/:eventId', new OnlyAdminMiddleware_1.default().getRequestHandler(), (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const eventId = parseInt(req.params.eventId);
+            yield this.eventRequester.deleteEvent(eventId);
+            res.status(200).send();
+        }));
         this.getRouter().get('/events', (req, res) => __awaiter(this, void 0, void 0, function* () {
             const showAll = req.query.showAll;
             const events = yield this.eventRequester.getAllEvents(showAll);
             res.status(200).send(events);
+        }));
+        this.getRouter().get('/event/:eventId', (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const eventId = parseInt(req.params.eventId);
+            const event = yield this.eventRequester.getEvent(eventId);
+            res.status(200).send(event);
         }));
         const upload = (0, multer_1.default)();
         this.getRouter().post('/event/:eventId/image', new OnlyAdminMiddleware_1.default().getRequestHandler(), upload.single('file'), (req, res) => __awaiter(this, void 0, void 0, function* () {

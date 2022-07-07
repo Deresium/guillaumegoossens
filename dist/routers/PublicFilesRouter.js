@@ -14,14 +14,26 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ApplicationRouter_1 = __importDefault(require("./ApplicationRouter"));
 class PublicFilesRouter extends ApplicationRouter_1.default {
-    constructor(eventRequester) {
+    constructor(eventRequester, pictureRequester) {
         super();
         this.eventRequester = eventRequester;
+        this.pictureRequester = pictureRequester;
     }
     initRoutes() {
         this.getRouter().get('/event/:eventId/image', (req, res) => __awaiter(this, void 0, void 0, function* () {
             const eventId = parseInt(req.params.eventId);
             const image = yield this.eventRequester.getEventPicture(eventId);
+            if (image) {
+                res.setHeader('Content-Type', 'image/*');
+                res.end(image, 'base64');
+            }
+            else {
+                res.status(404).send();
+            }
+        }));
+        this.getRouter().get('/picture/:pictureId', (req, res) => __awaiter(this, void 0, void 0, function* () {
+            const pictureId = parseInt(req.params.pictureId);
+            const image = yield this.pictureRequester.getPicture(pictureId);
             if (image) {
                 res.setHeader('Content-Type', 'image/*');
                 res.end(image, 'base64');

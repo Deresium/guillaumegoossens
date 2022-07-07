@@ -8,7 +8,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const PictureDS_1 = __importDefault(require("../models/datastores/PictureDS"));
 class PictureFacade {
     constructor(pictureDataGateway, fileDataGateway) {
         this.pictureDataGateway = pictureDataGateway;
@@ -29,6 +33,27 @@ class PictureFacade {
     getPicture(pictureId) {
         return __awaiter(this, void 0, void 0, function* () {
             return yield this.fileDataGateway.getPicture(pictureId);
+        });
+    }
+    getAllPictureIds() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pictures = yield this.pictureDataGateway.getAllPictures();
+            const sortedPictures = pictures.sort((p1, p2) => {
+                if (p1.getOrder() > p2.getOrder()) {
+                    return 1;
+                }
+                return -1;
+            });
+            return sortedPictures.map(picture => picture.getPictureId());
+        });
+    }
+    reorderPictures(picturesIds) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const picturesDS = new Array();
+            for (let i = 0; i < picturesIds.length; ++i) {
+                picturesDS.push(new PictureDS_1.default(picturesIds[i], i));
+            }
+            yield this.pictureDataGateway.updatePicturesOrder(picturesDS);
         });
     }
 }

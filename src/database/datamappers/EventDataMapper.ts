@@ -45,7 +45,8 @@ export default class EventDataMapper implements IEventDataGateway{
             zipCode: event.getZipCode(),
             town: event.getTown(),
             website: event.getWebsite(),
-            favorite: event.getFavorite()
+            favorite: event.getFavorite(),
+            showEvent: event.getShowEvent()
         },{
             where:{
                 eventId: event.getEventId()

@@ -73,6 +73,13 @@ export default class Event{
         return this.town;
     }
 
+    public affichAddress(){
+        if(this.type === 'CONCERT' && this.street && this.zipCode && this.town){
+            return `${this.street} ${this.zipCode} - ${this.town}`
+        }
+        return ''
+    }
+
     public getWebsite(){
         return this.website;
     }
@@ -85,7 +92,20 @@ export default class Event{
         return this.favorite;
     }
 
+    public affichFavorite(): string {
+        if (this.favorite)
+            return 'Oui';
+        return 'Non';
+    }
+
+
     public getShowEvent(){
         return this.showEvent;
+    }
+
+    public affichShowEvent(): string{
+        if(this.showEvent)
+            return 'Oui';
+        return 'Non';
     }
 }

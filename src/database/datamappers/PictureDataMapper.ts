@@ -21,12 +21,6 @@ export default class PictureDataMapper implements IPictureDataGateway{
 
     async getAllPictures(): Promise<Array<PictureEntity>> {
         return await PictureEntity.findAll();
-        /*return pictures.sort((p1, p2) => {
-            if(p1.getOrder() > p2.getOrder()){
-                return 1;
-            }
-            return -1;
-        });*/
     }
 
     async updatePicturesOrder(pictures: Array<PictureDS>): Promise<void> {

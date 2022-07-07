@@ -25,10 +25,22 @@ export default class EventRouter extends ApplicationRouter{
             res.status(200).send();
         });
 
+        this.getRouter().delete('/event/:eventId', new OnlyAdminMiddleware().getRequestHandler(), async(req, res) => {
+            const eventId = parseInt(req.params.eventId);
+            await this.eventRequester.deleteEvent(eventId);
+            res.status(200).send();
+        });
+
         this.getRouter().get('/events', async(req, res) => {
             const showAll = req.query.showAll;
             const events = await this.eventRequester.getAllEvents(showAll);
             res.status(200).send(events);
+        });
+
+        this.getRouter().get('/event/:eventId', async(req, res) => {
+            const eventId = parseInt(req.params.eventId);
+            const event = await this.eventRequester.getEvent(eventId);
+            res.status(200).send(event);
         });
 
 

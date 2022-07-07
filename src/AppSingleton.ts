@@ -14,6 +14,9 @@ import ExtractTokenMiddleware from "./middlewares/ExtractTokenMiddleware";
 import PublicFilesRouter from "./routers/PublicFilesRouter";
 import AwsFileDataMapper from "./external/aws/files/AwsFileDataMapper";
 import AwsOperations from "./external/aws/files/AwsOperations";
+import PictureRouter from "./routers/PictureRouter";
+import PictureFacade from "./business/facades/PictureFacade";
+import PictureDataMapper from "./database/datamappers/PictureDataMapper";
 
 export default class AppSingleton {
     private static instance: AppSingleton;
@@ -48,10 +51,12 @@ export default class AppSingleton {
 
         this.expressApp.use(new ReturnIndexMiddleware().getRequestHandler());
 
-        const eventFacade = new EventFacade(new EventDataMapper(), new AwsFileDataMapper(new AwsOperations()));
+        const fileDataMapper = new AwsFileDataMapper(new AwsOperations());
+        const eventFacade = new EventFacade(new EventDataMapper(), fileDataMapper);
+        const pictureFacade = new PictureFacade(new PictureDataMapper(), fileDataMapper);
 
 
-        this.expressApp.use('/api', new PublicFilesRouter(eventFacade).getRouter());
+        this.expressApp.use('/api', new PublicFilesRouter(eventFacade, pictureFacade).getRouter());
 
         this.expressApp.use(express.json());
 
@@ -62,6 +67,7 @@ export default class AppSingleton {
 
         this.expressApp.use('/api', new LoginRouter(new LoginFacade(new UserDataMapper())).getRouter());
         this.expressApp.use('/api', new EventRouter(eventFacade).getRouter());
+        this.expressApp.use('/api', new PictureRouter(pictureFacade).getRouter());
 
 
     }

@@ -19,6 +19,9 @@ const ExtractTokenMiddleware_1 = __importDefault(require("./middlewares/ExtractT
 const PublicFilesRouter_1 = __importDefault(require("./routers/PublicFilesRouter"));
 const AwsFileDataMapper_1 = __importDefault(require("./external/aws/files/AwsFileDataMapper"));
 const AwsOperations_1 = __importDefault(require("./external/aws/files/AwsOperations"));
+const PictureRouter_1 = __importDefault(require("./routers/PictureRouter"));
+const PictureFacade_1 = __importDefault(require("./business/facades/PictureFacade"));
+const PictureDataMapper_1 = __importDefault(require("./database/datamappers/PictureDataMapper"));
 class AppSingleton {
     constructor() {
         this.expressApp = (0, express_1.default)();
@@ -43,14 +46,17 @@ class AppSingleton {
         const publicDirectoryPath = path_1.default.join(__dirname, '../public');
         this.expressApp.use(express_1.default.static(publicDirectoryPath));
         this.expressApp.use(new ReturnIndexMiddleware_1.default().getRequestHandler());
-        const eventFacade = new EventFacade_1.default(new EventDataMapper_1.default(), new AwsFileDataMapper_1.default(new AwsOperations_1.default()));
-        this.expressApp.use('/api', new PublicFilesRouter_1.default(eventFacade).getRouter());
+        const fileDataMapper = new AwsFileDataMapper_1.default(new AwsOperations_1.default());
+        const eventFacade = new EventFacade_1.default(new EventDataMapper_1.default(), fileDataMapper);
+        const pictureFacade = new PictureFacade_1.default(new PictureDataMapper_1.default(), fileDataMapper);
+        this.expressApp.use('/api', new PublicFilesRouter_1.default(eventFacade, pictureFacade).getRouter());
         this.expressApp.use(express_1.default.json());
         const databaseConnectionGateway = new DatabaseConnectionMapper_1.default();
         databaseConnectionGateway.testConnect();
         this.expressApp.use(new ExtractTokenMiddleware_1.default().getRequestHandler());
         this.expressApp.use('/api', new LoginRouter_1.default(new LoginFacade_1.default(new UserDataMapper_1.default())).getRouter());
         this.expressApp.use('/api', new EventRouter_1.default(eventFacade).getRouter());
+        this.expressApp.use('/api', new PictureRouter_1.default(pictureFacade).getRouter());
     }
 }
 exports.default = AppSingleton;
