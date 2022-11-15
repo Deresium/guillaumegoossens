@@ -25,6 +25,10 @@ class LoginRouter extends ApplicationRouter_1.default {
             const googleJWT = req.body.googleJWT;
             const email = req.body.email;
             const password = req.body.password;
+            if (!googleJWT) {
+                res.status(400).send();
+                return;
+            }
             const loginRequester = new LoginRequesterDS_1.default(googleJWT, email, password);
             const userVM = yield this.loginRequester.login(loginRequester);
             if (!userVM) {
