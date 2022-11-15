@@ -1,10 +1,153 @@
 <template>
-<h1>Agenda</h1>
+    <div class="withMargin">
+        <h1>{{ textHeader }}</h1>
+        <div class="page">
+            <div class="buttons">
+                <button @click="showConcerts">Concerts</button>
+                <button @click="showReleases">Sorties</button>
+            </div>
+            <div class="events">
+                <div class="event" v-for="event in eventsDisplayed" :key="event.getEventId()">
+                    <img class="imgEvent" v-if="event.getPicture()" :src="getImageSrc(event.getEventId())"
+                         alt="img event"/>
+                    <div class="eventContent">
+                        <div class="icon">
+                            <img v-if="isConcertSelected" src="../assets/icons/ticket.svg" alt="ticket image"/>
+                            <img v-if="!isConcertSelected" src="../assets/icons/album.svg" alt="album image"/>
+                        </div>
+                        <div class="infosEvent">
+                            <p class="label">{{ event.getLabel() }}</p>
+                            <p class="date">{{ d(event.getDate()) }}</p>
+                            <p v-if="event.getDescription()">{{ event.getDescription() }}</p>
+                            <p v-if="event.affichAddress()" class="address">{{ event.affichAddress() }}</p>
+                            <p v-if="event.getWebsite()" class="website">
+                                <a :href="event.getWebsite()" rel="noopener"
+                                   target="_blank">{{ event.getWebsiteWithoutProtocol() }}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup lang="ts">
+
+import Event from "../models/Event";
+import EventRequester from "../requesters/EventRequester";
+import {useI18n} from "vue-i18n";
+import {computed, ref} from "vue";
+
+let events = new Array<Event>();
+
+const eventsDisplayed = ref(new Array<Event>());
+const textHeader = ref('Agenda');
+const svgImg = ref('');
+const isConcertSelected = ref(false);
+
+EventRequester.getAllEvents(false).then(eventsResponse => {
+    events = eventsResponse;
+    showConcerts();
+});
+
+const {d} = useI18n({useScope: 'global'});
+
+const showConcerts = () => {
+    eventsDisplayed.value = events.filter(event => event.getType() === 'CONCERT');
+    textHeader.value = 'Agenda - Concerts';
+    svgImg.value = 'ticket.svg';
+    isConcertSelected.value = true;
+};
+
+const showReleases = () => {
+    eventsDisplayed.value = events.filter(event => event.getType() === 'RELEASE');
+    textHeader.value = 'Agenda - Sorties';
+    svgImg.value = 'album.svg';
+    isConcertSelected.value = false;
+};
+
+const getImageSrc = (eventId: number) => {
+    return `${import.meta.env.VITE_APP_URL_SERVER}/api/event/${eventId}/image`;
+}
+
 </script>
 
 <style scoped>
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.events {
+    width: 100%;
+}
+
+.buttons {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.buttons button {
+    font-size: x-large;
+}
+
+.event {
+    position: relative;
+    margin-bottom: 150px;
+}
+
+.infosEvent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.icon img {
+    width: 50px;
+}
+
+.date {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.imgEvent {
+    width: 100%;
+    max-width: 300px;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: .3;
+}
+
+.eventContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media(min-width: 900px){
+    .buttons{
+        width: 50%;
+    }
+
+    .imgEvent{
+        max-width: 400px;
+    }
+}
 
 </style>

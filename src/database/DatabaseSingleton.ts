@@ -14,8 +14,9 @@ export default class DatabaseSingleton{
         }
 
         this.sequelize = new Sequelize(process.env.DATABASE_URL, {
-            dialectOptions
-        })
+            dialectOptions,
+            schema: 'goossens'
+        });
     }
 
     public static getInstance(): DatabaseSingleton{

@@ -43,7 +43,7 @@ class EventFacade {
                 if (!event1.getFavorite() && event2.getFavorite()) {
                     return 1;
                 }
-                if (event1.getDate() > event2.getDate()) {
+                if (event1.getDate() < event2.getDate()) {
                     return -1;
                 }
                 return 1;

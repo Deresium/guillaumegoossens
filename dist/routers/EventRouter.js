@@ -38,7 +38,7 @@ class EventRouter extends ApplicationRouter_1.default {
             res.status(200).send();
         }));
         this.getRouter().get('/events', (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const showAll = req.query.showAll;
+            const showAll = req.query.showAll === 'true';
             const events = yield this.eventRequester.getAllEvents(showAll);
             res.status(200).send(events);
         }));

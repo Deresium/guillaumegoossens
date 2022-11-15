@@ -17,7 +17,7 @@ export default class PublicFilesRouter extends ApplicationRouter{
             const eventId = parseInt(req.params.eventId);
             const image = await this.eventRequester.getEventPicture(eventId);
             if(image){
-                res.setHeader('Content-Type', 'image/*');
+                res.setHeader('Content-Type', 'image/jpg');
                 res.end(image, 'base64');
             }else{
                 res.status(404).send();
@@ -28,7 +28,8 @@ export default class PublicFilesRouter extends ApplicationRouter{
             const pictureId = parseInt(req.params.pictureId);
             const image = await this.pictureRequester.getPicture(pictureId);
             if(image){
-                res.setHeader('Content-Type', 'image/*');
+                res.setHeader('Content-Type', 'image/jpg');
+                res.setHeader('Content-Disposition', `inline; filename=${pictureId}.jpg`);
                 res.end(image, 'base64');
             }else{
                 res.status(404).send();

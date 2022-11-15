@@ -17,7 +17,7 @@
             </div>
             <div class="menuMedia">
                 <a target="_blank" rel="noopener"
-                   href="https://open.spotify.com/artist/6SzrU2vncO3th26VYZBbBa?si=AQK2sgYSRNCatRueFsvwkQ">
+                   href="https://open.spotify.com/artist/6SzrU2vncO3th26VYZBbBa?si=hWQu77UOSeyHNDAubhiHZg">
                     <img src="../../assets/icons/spotify.svg" alt="spotify icon"/>
                 </a>
                 <a target="_blank" rel="noopener"

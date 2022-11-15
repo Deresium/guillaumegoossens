@@ -5,7 +5,7 @@
         width="100%"
         height="380"
         frameBorder="0"
-        allowfullscreen=""
+        allowfullscreen="true"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     />
 </template>

@@ -22,6 +22,7 @@ export default class SendMailSESDataMapper implements ISendMailDataGateway {
             },
             Destination: {
                 ToAddresses: ['guillaumegoossens@gmail.com']
+               // ToAddresses: ['dimitri.steinbusch@hotmail.com']
             },
             Source: 'info@guillaumegoossens.be'
         });

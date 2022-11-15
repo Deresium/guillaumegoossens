@@ -66,6 +66,12 @@ button{
     cursor: pointer;
 }
 
+.withMargin{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
 @media (min-width: 900px) {
     .phone {
         display: none;
@@ -73,6 +79,18 @@ button{
 
     .desktop {
         display: block;
+    }
+
+    .withMargin{
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .withMargin{
+        margin-left: 200px;
+        margin-right: 200px;
     }
 }
 </style>

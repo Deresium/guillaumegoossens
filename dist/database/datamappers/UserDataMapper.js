@@ -26,11 +26,16 @@ class UserDataMapper {
     }
     getUserByGoogleId(googleId) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield UserEntity_1.default.findOne({
-                where: {
-                    googleId
-                }
-            });
+            try {
+                return yield UserEntity_1.default.findOne({
+                    where: {
+                        googleId
+                    }
+                });
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
 }

@@ -17,7 +17,7 @@ export default class PictureRouter extends ApplicationRouter{
             res.status(200).send(pictureIds);
         });
 
-        this.getRouter().delete('/picture/:pictureId', new OnlyAdminMiddleware().getRequestHandler(), async(req, res) => {
+        this.getRouter().delete('/pictures/:pictureId', new OnlyAdminMiddleware().getRequestHandler(), async(req, res) => {
             const pictureId = parseInt(req.params.pictureId);
             await this.pictureRequester.deletePicture(pictureId);
             res.status(200).send();
@@ -33,6 +33,10 @@ export default class PictureRouter extends ApplicationRouter{
         const upload = multer();
         this.getRouter().post('/picture', new OnlyAdminMiddleware().getRequestHandler(), upload.single('file'), async(req, res) => {
             const image = req.file.buffer;
+            if(req.file.mimetype !== 'image/jpg' && req.file.mimetype !== 'image/jpeg'){
+                res.status(400).send();
+                return;
+            }
             await this.pictureRequester.addPicture(image);
             res.status(200).send();
         });

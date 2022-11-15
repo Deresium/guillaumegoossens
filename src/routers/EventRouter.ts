@@ -32,7 +32,7 @@ export default class EventRouter extends ApplicationRouter{
         });
 
         this.getRouter().get('/events', async(req, res) => {
-            const showAll = req.query.showAll;
+            const showAll: boolean = req.query.showAll === 'true';
             const events = await this.eventRequester.getAllEvents(showAll);
             res.status(200).send(events);
         });

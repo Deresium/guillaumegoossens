@@ -95,7 +95,7 @@ h1{
 }
 
 .actionButtons a:last-child {
-    color: #636363;
+    color: black;
     background-color: white;
 }
 

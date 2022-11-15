@@ -1,3 +1,5 @@
+import * as http from "http";
+
 export default class Event{
     private readonly eventId: number;
     private readonly type: string;
@@ -82,6 +84,14 @@ export default class Event{
 
     public getWebsite(){
         return this.website;
+    }
+
+    public getWebsiteWithoutProtocol(){
+        if(!this.website){
+            return '';
+        }
+        const regex = /(https|http):\/\//;
+        return this.website.replace(regex, '');
     }
 
     public getPicture(){

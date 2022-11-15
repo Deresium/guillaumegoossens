@@ -8,7 +8,9 @@
         />
 
         <img v-if="isEventDropImg" :class="insideInputStyle" class="imgProduct" :src="getSrcImg" alt="product img"/>
-        <span v-if="isPictureDropImg" :class="insideInputStyle" class="dropPicture"/>
+        <span v-if="isPictureDropImg" :class="insideInputStyle" class="dropPicture">
+            <img class="addIcon" src="../../assets/icons/add.svg" alt="add icon"/>
+        </span>
     </label>
 </template>
 
@@ -123,9 +125,20 @@ img.isHoverStyle, span.isHoverStyle {
 }
 
 .dropPicture{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 200px;
     border: solid 1px #242424;
+}
+
+.dropPicture:hover{
+    cursor: pointer;
+}
+
+.addIcon{
+    width: 50px;
+    height: 50px;
 }
 
 </style>

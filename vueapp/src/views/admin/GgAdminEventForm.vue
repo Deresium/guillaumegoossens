@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="commitEvent" novalidate="novalidate">
+    <form @submit.prevent="commitEvent" :novalidate="true">
         <label>
             <span>Type</span>
             <select v-model="selectedType">
@@ -101,7 +101,9 @@ const showEvent = ref(false);
 const loadEvent = async () => {
     const event = await EventRequester.getEventById(eventId.value);
     selectedType.value = event.getType();
-    selectedDate.value = event.getDate().split('T')[0];
+    if (event.getDate()) {
+        selectedDate.value = event.getDate().split('T')[0];
+    }
     label.value = event.getLabel();
     description.value = event.getDescription();
     street.value = event.getStreet();
@@ -172,7 +174,7 @@ label {
     border: red 1px solid;
 }
 
-.dropImg{
+.dropImg {
     width: 100%;
 }
 

@@ -24,7 +24,7 @@ class PublicFilesRouter extends ApplicationRouter_1.default {
             const eventId = parseInt(req.params.eventId);
             const image = yield this.eventRequester.getEventPicture(eventId);
             if (image) {
-                res.setHeader('Content-Type', 'image/*');
+                res.setHeader('Content-Type', 'image/jpg');
                 res.end(image, 'base64');
             }
             else {
@@ -35,7 +35,8 @@ class PublicFilesRouter extends ApplicationRouter_1.default {
             const pictureId = parseInt(req.params.pictureId);
             const image = yield this.pictureRequester.getPicture(pictureId);
             if (image) {
-                res.setHeader('Content-Type', 'image/*');
+                res.setHeader('Content-Type', 'image/jpg');
+                res.setHeader('Content-Disposition', `inline; filename=${pictureId}.jpg`);
                 res.end(image, 'base64');
             }
             else {

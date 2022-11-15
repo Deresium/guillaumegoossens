@@ -11,6 +11,7 @@ import GgAdmin from "../views/admin/GgAdmin.vue";
 import GgAdminEvent from "../views/admin/GgAdminEvent.vue";
 import GgAdminPicture from "../views/admin/GgAdminPicture.vue";
 import GgAdminEventForm from "../views/admin/GgAdminEventForm.vue";
+import GgConfidentialite from "../views/GGConfidencialite.vue";
 
 export const routes:Array<RouteRecordRaw> = [
     {
@@ -42,6 +43,12 @@ export const routes:Array<RouteRecordRaw> = [
         name: 'gallery',
         component: GgGallery,
         meta: {title: 'Guillaume Goossens - Galerie'}
+    },
+    {
+        path: '/confidentialite',
+        name: 'confidentialite',
+        component: GgConfidentialite,
+        meta: {title: 'Guillaume Goossens - Règle de confidentialité'}
     },
     {
         path: '/musique',

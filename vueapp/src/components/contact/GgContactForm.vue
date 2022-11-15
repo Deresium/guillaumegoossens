@@ -108,6 +108,10 @@ watch(message, () => {
 </script>
 
 <style scoped>
+form{
+    width: 100%;
+}
+
 label{
     display: flex;
     flex-direction: column;
@@ -121,8 +125,8 @@ textarea{
 .sendButton{
     font-weight: 300;
     margin-top: 20px;
-    background-color: #242424;
-    border: none;
+    background-color: black;
+    border: 1px solid white;
     font-size: x-large;
     padding: 5px;
     border-radius: 5px;
@@ -132,6 +136,7 @@ textarea{
 input, textarea{
     border: solid 1px white;
     color: white;
+    background-color: black;
     padding-top: 2px;
     padding-bottom: 2px;
     border-radius: 2px;

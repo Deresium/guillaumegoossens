@@ -21,7 +21,8 @@ class DatabaseSingleton {
             };
         }
         this.sequelize = new sequelize_1.Sequelize(process.env.DATABASE_URL, {
-            dialectOptions
+            dialectOptions,
+            schema: 'goossens'
         });
     }
     static getInstance() {

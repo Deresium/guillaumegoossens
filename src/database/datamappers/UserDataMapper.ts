@@ -12,11 +12,15 @@ export default class UserDataMapper implements IUserDataGateway{
     }
 
     async getUserByGoogleId(googleId: string): Promise<UserEntity> {
+        try{
         return await UserEntity.findOne({
             where: {
                 googleId
             }
         });
+        }catch(error){
+           console.log(error);
+        }
 
     }
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="marginView">
+    <div class="withMargin">
         <h1>Musique</h1>
         <div class="routing">
             <router-link :to="{name: 'spotifyMusic'}">Spotify</router-link>
@@ -29,7 +29,7 @@
 }
 
 .router-link-active {
-    color: #636363;
+    color: black;
     background-color: white
 }
 </style>
