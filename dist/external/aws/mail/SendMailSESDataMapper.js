@@ -40,7 +40,7 @@ class SendMailSESDataMapper {
             });
             try {
                 yield client.send(command);
-                console.log('email sent to guillaumegoossens@gmail.com');
+                console.log('guillaumegoossensmusique@gmail.com');
             }
             catch (exception) {
                 console.error(exception);

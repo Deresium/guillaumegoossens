@@ -29,7 +29,7 @@ export default class SendMailSESDataMapper implements ISendMailDataGateway {
 
         try{
             await client.send(command);
-            console.log('email sent to guillaumegoossens@gmail.com');
+            console.log('guillaumegoossensmusique@gmail.com');
         }catch(exception){
             console.error(exception);
         }
