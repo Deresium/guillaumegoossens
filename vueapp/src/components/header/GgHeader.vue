@@ -1,13 +1,13 @@
 <template>
     <header>
         <div class="headerPhone">
-            <GgLogo/>
+            <GgLogoSmall/>
             <button class="hamburgerButton" @click="showFullMenu=true">
                 <img class="menuIcon" src="../../assets/icons/menu.svg" alt="menu icon"/>
             </button>
         </div>
         <div class="headerDesktop">
-            <GgLogo/>
+            <GgLogoSmall/>
             <div class="menuLinks">
                 <router-link :to="{name: 'artist'}">Artiste</router-link>
                 <router-link :to="{name: 'diary'}">Agenda</router-link>
@@ -42,6 +42,7 @@
 import GgLogo from "./GgLogo.vue";
 import {ref} from "vue";
 import GgFullMenu from "./GgFullMenu.vue";
+import GgLogoSmall from "./GgLogoSmall.vue";
 
 const showFullMenu = ref(false);
 

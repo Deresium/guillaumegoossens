@@ -29,15 +29,15 @@
 }
 
 .topTitle {
-    position: relative;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: center;
     margin-top: 30px;
 }
 
 .guillaumePic {
-    width: 90%;
+    width: 95%;
 }
 
 h1{
@@ -47,10 +47,7 @@ h1{
 }
 
 .topTitle h1 {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    font-size: 42px;
+    font-size: 36px;
 }
 
 .leftColumn h1{
@@ -101,13 +98,13 @@ h1{
 
 @media (min-width: 500px) {
     .topTitle h1 {
-        font-size: 60px;
+        font-size: 50px;
     }
 }
 
 @media(min-width: 730px){
     .topTitle h1{
-        font-size: 90px;
+        font-size: 80px;
     }
 
     .guillaumePic{
