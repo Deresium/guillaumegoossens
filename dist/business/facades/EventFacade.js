@@ -43,7 +43,7 @@ class EventFacade {
                 if (!event1.getFavorite() && event2.getFavorite()) {
                     return 1;
                 }
-                if (event1.getDate() < event2.getDate()) {
+                if (event1.getDate() > event2.getDate()) {
                     return -1;
                 }
                 return 1;
@@ -82,7 +82,7 @@ class EventFacade {
         });
     }
     static parseEventToEventDS(event) {
-        return new EventDS_1.default(event.getEventId(), event.getType(), event.getDate(), event.getLabel(), event.getDescription(), event.getStreet(), event.getZipCode(), event.getTown(), event.getWebsite(), event.getPicture(), event.getFavorite(), event.getShowEvent());
+        return new EventDS_1.default(event.getEventId(), event.getType(), event.getDate(), event.getLabel(), event.getDescription(), event.getStreet(), event.getZipCode(), event.getTown(), event.getWebsite(), event.getPicture(), event.getFavorite(), event.getShowEvent(), event.getWebsiteText());
     }
 }
 exports.default = EventFacade;

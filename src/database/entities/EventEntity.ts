@@ -14,6 +14,7 @@ export default class EventEntity extends Model{
     private picture: boolean;
     private favorite: boolean;
     private showEvent: boolean;
+    private websiteText: string;
 
     public getEventId(){
         return this.eventId;
@@ -61,6 +62,10 @@ export default class EventEntity extends Model{
 
     public getShowEvent(){
         return this.showEvent;
+    }
+
+    public getWebsiteText(){
+        return this.websiteText;
     }
 }
 
@@ -113,6 +118,10 @@ EventEntity.init({
     showEvent: {
         type: DataTypes.BOOLEAN,
         allowNull: false
+    },
+    websiteText: {
+        type: DataTypes.STRING(1024),
+        allowNull: true
     }
 },{
     tableName: 'Events',

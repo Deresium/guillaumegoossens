@@ -50,7 +50,7 @@
                         leurs
                         vibrations».</p>
                 </div>
-                <img class="imgBio" src="../assets/live.png" alt="on stage"/>
+                <img class="imgBio" src="../assets/live.jpg" alt="on stage"/>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
 
 .firstP {
     font-weight: bold;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     font-size: large;
 }
 
@@ -76,21 +76,24 @@
     font-style: italic;
 }
 
+p{
+    text-align: justify;
+}
 @media (min-width: 800px) {
     .imgSection {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: 100px;
-        margin-bottom: 100px;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
     .paragraphSection {
-        width: 55%;
+        width: 65%;
     }
 
     .imgBio {
-        width: 40%;
+        width: 30%;
     }
 }
 

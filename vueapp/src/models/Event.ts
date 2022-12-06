@@ -13,8 +13,10 @@ export default class Event{
     private readonly picture: boolean;
     private readonly favorite: boolean;
     private readonly showEvent: boolean;
+    private readonly websiteText: string;
 
-    constructor(eventId: number, type: string, date: string, label: string, description: string, street: string, zipCode: string, town: string, website: string, picture: boolean, favorite: boolean, showEvent: boolean) {
+    constructor(eventId: number, type: string, date: string, label: string, description: string, street: string,
+                zipCode: string, town: string, website: string, picture: boolean, favorite: boolean, showEvent: boolean, websiteText: string) {
         this.eventId = eventId;
         this.type = type;
         this.date = date;
@@ -27,6 +29,7 @@ export default class Event{
         this.picture = picture;
         this.favorite = favorite;
         this.showEvent = showEvent;
+        this.websiteText = websiteText;
     }
 
     public getEventId(){
@@ -35,6 +38,10 @@ export default class Event{
 
     public getType(){
         return this.type;
+    }
+
+    public isConcert(){
+        return this.type === 'CONCERT';
     }
 
     public getDate(){
@@ -117,5 +124,9 @@ export default class Event{
         if(this.showEvent)
             return 'Oui';
         return 'Non';
+    }
+
+    public getWebsiteText(): string{
+        return this.websiteText;
     }
 }

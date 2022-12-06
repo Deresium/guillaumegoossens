@@ -72,6 +72,10 @@ button{
     margin-bottom: 30px;
 }
 
+.withMargin h1 {
+    text-align: center;
+}
+
 @media (min-width: 900px) {
     .phone {
         display: none;

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class EventDS {
-    constructor(eventId, type, date, label, description, street, zipCode, town, website, picture, favorite, showEvent) {
+    constructor(eventId, type, date, label, description, street, zipCode, town, website, picture, favorite, showEvent, websiteText) {
         this.eventId = eventId;
         this.type = type;
         this.date = date;
@@ -14,6 +14,7 @@ class EventDS {
         this.picture = picture;
         this.favorite = favorite;
         this.showEvent = showEvent;
+        this.websiteText = websiteText;
     }
     getEventId() {
         return this.eventId;
@@ -50,6 +51,9 @@ class EventDS {
     }
     getShowEvent() {
         return this.showEvent;
+    }
+    getWebsiteText() {
+        return this.websiteText;
     }
 }
 exports.default = EventDS;

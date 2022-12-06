@@ -2,8 +2,8 @@
     <div class="withMargin">
         <h1>Musique</h1>
         <div class="routing">
-            <router-link :to="{name: 'spotifyMusic'}">Spotify</router-link>
-            <router-link :to="{name: 'youtubeMusic'}">Youtube</router-link>
+            <router-link :to="{name: 'spotifyMusic'}">Musique</router-link>
+            <router-link :to="{name: 'youtubeMusic'}">Vidéos</router-link>
         </div>
         <router-view/>
     </div>

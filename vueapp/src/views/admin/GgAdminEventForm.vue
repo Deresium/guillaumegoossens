@@ -23,6 +23,10 @@
             <span>Site web</span>
             <input type="text" v-model="website"/>
         </label>
+        <label>
+            <span>Texte site web</span>
+            <input type="text" v-model="websiteText"/>
+        </label>
         <div v-if="selectedType === 'CONCERT'">
             <label>
                 <span>Rue</span>
@@ -97,6 +101,7 @@ const town = ref("");
 const website = ref("");
 const favorite = ref(false);
 const showEvent = ref(false);
+const websiteText = ref('');
 
 const loadEvent = async () => {
     const event = await EventRequester.getEventById(eventId.value);
@@ -117,7 +122,8 @@ const loadEvent = async () => {
 loadEvent();
 
 const commitEvent = async () => {
-    const event = new Event(eventId.value, selectedType.value, selectedDate.value, label.value, description.value, street.value, zipCode.value, town.value, website.value, false, favorite.value, showEvent.value);
+    const event = new Event(eventId.value, selectedType.value, selectedDate.value, label.value, description.value,
+        street.value, zipCode.value, town.value, website.value, false, favorite.value, showEvent.value, websiteText.value);
     await axiosServer.put('/event', {event});
     await router.push({name: 'adminEvent'});
 };

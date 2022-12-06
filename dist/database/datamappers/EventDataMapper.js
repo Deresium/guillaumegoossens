@@ -34,14 +34,19 @@ class EventDataMapper {
     }
     getAllEvents(showAll) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (showAll) {
-                return yield EventEntity_1.default.findAll();
-            }
-            return yield EventEntity_1.default.findAll({
-                where: {
-                    showEvent: true
+            try {
+                if (showAll) {
+                    return yield EventEntity_1.default.findAll();
                 }
-            });
+                return yield EventEntity_1.default.findAll({
+                    where: {
+                        showEvent: true
+                    }
+                });
+            }
+            catch (error) {
+                console.log(error);
+            }
         });
     }
     getEvent(eventId) {
@@ -61,7 +66,8 @@ class EventDataMapper {
                 town: event.getTown(),
                 website: event.getWebsite(),
                 favorite: event.getFavorite(),
-                showEvent: event.getShowEvent()
+                showEvent: event.getShowEvent(),
+                websiteText: event.getWebsiteText()
             }, {
                 where: {
                     eventId: event.getEventId()

@@ -1,19 +1,15 @@
 <template>
     <div class="withMargin">
-        <h1>{{ textHeader }}</h1>
+        <h1>Actualité</h1>
         <div class="page">
-            <div class="buttons">
-                <button @click="showConcerts">Concerts</button>
-                <button @click="showReleases">Sorties</button>
-            </div>
             <div class="events">
-                <div class="event" v-for="event in eventsDisplayed" :key="event.getEventId()">
+                <div class="event" v-for="event in events" :key="event.getEventId()">
                     <img class="imgEvent" v-if="event.getPicture()" :src="getImageSrc(event.getEventId())"
                          alt="img event"/>
                     <div class="eventContent">
                         <div class="icon">
-                            <img v-if="isConcertSelected" src="../assets/icons/ticket.svg" alt="ticket image"/>
-                            <img v-if="!isConcertSelected" src="../assets/icons/album.svg" alt="album image"/>
+                            <img v-if="event.isConcert()" src="../assets/icons/ticket.svg" alt="ticket image"/>
+                            <img v-if="!event.isConcert()" src="../assets/icons/album.svg" alt="album image"/>
                         </div>
                         <div class="infosEvent">
                             <p class="label">{{ event.getLabel() }}</p>
@@ -22,7 +18,7 @@
                             <p v-if="event.affichAddress()" class="address">{{ event.affichAddress() }}</p>
                             <p v-if="event.getWebsite()" class="website">
                                 <a :href="event.getWebsite()" rel="noopener"
-                                   target="_blank">{{ event.getWebsiteWithoutProtocol() }}</a>
+                                   target="_blank">{{ event.getWebsiteText() }}</a>
                             </p>
                         </div>
                     </div>
@@ -39,33 +35,15 @@ import EventRequester from "../requesters/EventRequester";
 import {useI18n} from "vue-i18n";
 import {computed, ref} from "vue";
 
-let events = new Array<Event>();
+let events = ref(new Array<Event>());
 
-const eventsDisplayed = ref(new Array<Event>());
-const textHeader = ref('Agenda');
 const svgImg = ref('');
-const isConcertSelected = ref(false);
 
 EventRequester.getAllEvents(false).then(eventsResponse => {
-    events = eventsResponse;
-    showConcerts();
+    events.value = eventsResponse;
 });
 
 const {d} = useI18n({useScope: 'global'});
-
-const showConcerts = () => {
-    eventsDisplayed.value = events.filter(event => event.getType() === 'CONCERT');
-    textHeader.value = 'Agenda - Concerts';
-    svgImg.value = 'ticket.svg';
-    isConcertSelected.value = true;
-};
-
-const showReleases = () => {
-    eventsDisplayed.value = events.filter(event => event.getType() === 'RELEASE');
-    textHeader.value = 'Agenda - Sorties';
-    svgImg.value = 'album.svg';
-    isConcertSelected.value = false;
-};
 
 const getImageSrc = (eventId: number) => {
     return `${import.meta.env.VITE_APP_URL_SERVER}/api/event/${eventId}/image`;
@@ -134,18 +112,18 @@ const getImageSrc = (eventId: number) => {
     opacity: .3;
 }
 
-.eventContent{
+.eventContent {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-@media(min-width: 900px){
-    .buttons{
+@media (min-width: 900px) {
+    .buttons {
         width: 50%;
     }
 
-    .imgEvent{
+    .imgEvent {
         max-width: 400px;
     }
 }

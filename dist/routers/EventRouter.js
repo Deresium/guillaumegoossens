@@ -28,7 +28,7 @@ class EventRouter extends ApplicationRouter_1.default {
         }));
         this.getRouter().put('/event', new OnlyAdminMiddleware_1.default().getRequestHandler(), (req, res) => __awaiter(this, void 0, void 0, function* () {
             const event = req.body.event;
-            const eventDS = new EventDS_1.default(event.eventId, event.type, event.date, event.label, event.description, event.street, event.zipCode, event.town, event.website, event.picture, event.favorite, event.showEvent);
+            const eventDS = new EventDS_1.default(event.eventId, event.type, event.date, event.label, event.description, event.street, event.zipCode, event.town, event.website, event.picture, event.favorite, event.showEvent, event.websiteText);
             yield this.eventRequester.updateEvent(eventDS);
             res.status(200).send();
         }));

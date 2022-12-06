@@ -2,7 +2,7 @@
     <div class="home">
         <div class="topTitle">
             <img class="guillaumePic" src="../assets/guillaume.jpg" alt="Guillaume"/>
-            <h1>Guillaume<br/>Goossens</h1>
+            <h1>Guillaume Goossens</h1>
         </div>
 
         <div class="leftColumn">
@@ -14,7 +14,7 @@
 
             <div class="actionButtons">
                 <router-link :to="{name: 'artist'}">Artiste</router-link>
-                <router-link :to="{name: 'diary'}">Agenda</router-link>
+                <router-link :to="{name: 'music'}">Musique</router-link>
             </div>
         </div>
     </div>
@@ -26,6 +26,7 @@
 <style scoped>
 .home{
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .topTitle {
@@ -47,7 +48,7 @@ h1{
 }
 
 .topTitle h1 {
-    font-size: 36px;
+    font-size: 30px;
 }
 
 .leftColumn h1{
@@ -58,7 +59,7 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: x-large;
+    font-size: large;
     font-family: 'Merriweather', serif;
     font-weight: 300;
 }
@@ -83,7 +84,7 @@ h1{
     width: 70%;
     border: white 1px solid;
     text-align: center;
-    font-size: x-large;
+    font-size: large;
     font-weight: 400;
 }
 
@@ -98,13 +99,13 @@ h1{
 
 @media (min-width: 500px) {
     .topTitle h1 {
-        font-size: 50px;
+        font-size: 45px;
     }
 }
 
 @media(min-width: 730px){
     .topTitle h1{
-        font-size: 80px;
+        font-size: 70px;
     }
 
     .guillaumePic{
@@ -112,7 +113,7 @@ h1{
     }
 
     .quote{
-        font-size: xx-large;
+        font-size: x-large;
     }
 }
 
@@ -123,6 +124,7 @@ h1{
 
     .leftColumn h1{
         display: block;
+        text-align: center;
     }
 
     .home{
@@ -137,6 +139,10 @@ h1{
     }
 
     .leftColumn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
         border-left: 30px solid #242424;
         width: 30%;
@@ -144,12 +150,12 @@ h1{
     }
 
     h1{
-        font-size: 92px;
+        font-size: 85px;
     }
 
     .quote{
         align-items: flex-start;
-        font-size: xx-large;
+        font-size: x-large;
     }
 
     .actionButtons{
@@ -158,7 +164,7 @@ h1{
     }
 
     .actionButtons a{
-        font-size: xx-large;
+        font-size: x-large;
     }
 
     .actionButtons a:first-child{

@@ -1,7 +1,7 @@
 <template>
     <div class="routes">
         <router-link @click="localModelValue=false" :to="{name: 'artist'}">Artiste</router-link>
-        <router-link @click="localModelValue=false" :to="{name: 'diary'}">Agenda</router-link>
+        <router-link @click="localModelValue=false" :to="{name: 'diary'}">Actualité</router-link>
         <router-link @click="localModelValue=false" :to="{name: 'spotifyMusic'}">Musique</router-link>
         <router-link @click="localModelValue=false" :to="{name: 'gallery'}">Galerie</router-link>
         <router-link @click="localModelValue=false" :to="{name: 'contact'}">Contact</router-link>

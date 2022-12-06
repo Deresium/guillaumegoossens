@@ -33,10 +33,10 @@ export const routes:Array<RouteRecordRaw> = [
         meta: {title: 'Guillaume Goossens - Contact'}
     },
     {
-        path: '/agenda',
+        path: '/actualite',
         name: 'diary',
         component: GgDiary,
-        meta: {title: 'Guillaume Goossens - Agenda'}
+        meta: {title: 'Guillaume Goossens - Actualité'}
     },
     {
         path: '/galerie',

@@ -20,7 +20,7 @@ export default class EventRouter extends ApplicationRouter{
 
         this.getRouter().put('/event', new OnlyAdminMiddleware().getRequestHandler(), async(req, res) => {
             const event = req.body.event;
-            const eventDS = new EventDS(event.eventId, event.type, event.date, event.label, event.description, event.street, event.zipCode, event.town, event.website, event.picture, event.favorite, event.showEvent);
+            const eventDS = new EventDS(event.eventId, event.type, event.date, event.label, event.description, event.street, event.zipCode, event.town, event.website, event.picture, event.favorite, event.showEvent, event.websiteText);
             await this.eventRequester.updateEvent(eventDS);
             res.status(200).send();
         });

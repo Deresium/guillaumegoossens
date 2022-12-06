@@ -42,6 +42,9 @@ class EventEntity extends sequelize_1.Model {
     getShowEvent() {
         return this.showEvent;
     }
+    getWebsiteText() {
+        return this.websiteText;
+    }
 }
 exports.default = EventEntity;
 EventEntity.init({
@@ -93,6 +96,10 @@ EventEntity.init({
     showEvent: {
         type: sequelize_1.DataTypes.BOOLEAN,
         allowNull: false
+    },
+    websiteText: {
+        type: sequelize_1.DataTypes.STRING(1024),
+        allowNull: true
     }
 }, {
     tableName: 'Events',
