@@ -20,7 +20,7 @@
             <h2>Espace Pro</h2>
             <div class="linksPdf">
                 <a :href="urlCommunique" target="_blank" download="communique presse" rel="noopener">Télécharger le<br/>Communiqué de presse</a>
-                <a :href="urlFicheTech" target="_blank" download="fiche technique" rel="noopener">Télécharger la<br/>Fiche techique</a>
+                <a :href="urlFicheTech" target="_blank" download="fiche technique" rel="noopener">Télécharger la<br/>Fiche technique</a>
             </div>
         </div>
     </div>
