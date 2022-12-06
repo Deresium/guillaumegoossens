@@ -19,8 +19,8 @@
         <div class="pro">
             <h2>Espace Pro</h2>
             <div class="linksPdf">
-                <a href="./public/communique_presse.pdf" download="communique presse">Télécharger le<br/>Communiqué de presse</a>
-                <a href="./public/fiche_technique.pdf" download="fiche technique">Télécharger la<br/>Fiche techique</a>
+                <a :href="urlCommunique" target="_blank" download="communique presse" rel="noopener">Afficher le<br/>Communiqué de presse</a>
+                <a :href="urlFicheTech" target="_blank" download="fiche technique" rel="noopener">Afficher la<br/>Fiche techique</a>
             </div>
         </div>
     </div>
@@ -30,6 +30,10 @@
 import GgContactForm from "../components/contact/GgContactForm.vue";
 import GgLogo from "../components/header/GgLogo.vue";
 import GgLogoSmall from "../components/header/GgLogoSmall.vue";
+import {computed} from "vue";
+
+const urlCommunique = computed(() => `${import.meta.env.VITE_APP_URL_SERVER}/communique_presse.pdf`);
+const urlFicheTech = computed(() => `${import.meta.env.VITE_APP_URL_SERVER}/fiche_technique.pdf`);
 </script>
 
 <style scoped>
