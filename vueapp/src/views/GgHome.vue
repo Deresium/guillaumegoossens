@@ -14,7 +14,7 @@
 
             <div class="actionButtons">
                 <router-link :to="{name: 'artist'}">Artiste</router-link>
-                <router-link :to="{name: 'music'}">Musique</router-link>
+                <router-link :to="{name: 'spotify'}">Musique</router-link>
             </div>
         </div>
     </div>
