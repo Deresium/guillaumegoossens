@@ -76,7 +76,11 @@ const getImageSrc = (eventId: number) => {
 
 .event {
     position: relative;
-    margin-bottom: 150px;
+    padding: 5px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 25px 0 rgba(255, 255, 255, .3);
+    box-sizing: border-box;
 }
 
 .infosEvent {

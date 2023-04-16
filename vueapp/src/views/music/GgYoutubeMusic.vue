@@ -1,6 +1,18 @@
 <template>
     <div class="videos">
         <div class="video">
+            <h2>Les regrets</h2>
+            <div class="iframeVideo">
+                <iframe
+                        src="https://www.youtube.com/embed/5CAeUNKOMdY"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                />
+            </div>
+        </div>
+        <div class="video">
             <h2>On existe encore</h2>
             <div class="iframeVideo">
                 <iframe

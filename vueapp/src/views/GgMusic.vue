@@ -21,15 +21,17 @@
 }
 
 .routing a {
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, .3);
     padding: 15px;
     text-decoration: none;
     font-size: large;
     font-weight: 400;
+    border-radius: 15px;
+    box-shadow: 2px 2px 25px 0 rgba(255, 255, 255, .3);
 }
 
 .router-link-active {
     color: black;
-    background-color: white
+    background-color: rgba(255, 255, 255, .8)
 }
 </style>

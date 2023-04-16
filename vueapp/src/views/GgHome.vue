@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <div class="topTitle">
-            <img class="guillaumePic" src="../assets/guillaume.jpg" alt="Guillaume"/>
+            <img class="guillaumePic" src="../assets/guillaume_goossens_home.jpg" alt="Guillaume"/>
             <h1>Guillaume Goossens</h1>
         </div>
 
@@ -73,28 +73,27 @@ h1{
 
 .actionButtons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .actionButtons a {
     display: block;
     text-decoration: none;
     padding: 20px;
-    width: 70%;
-    border: white 1px solid;
+    border: 1px solid rgba(255, 255, 255, .3);
     text-align: center;
     font-size: large;
     font-weight: 400;
+    border-radius: 15px;
+    box-shadow: 2px 2px 25px 0 rgba(255, 255, 255, .3);
 }
 
-.actionButtons a:first-child {
-    margin-bottom: 20px;
-}
 
 .actionButtons a:last-child {
     color: black;
-    background-color: white;
+    background-color: rgba(255, 255, 255, .8);
 }
 
 @media (min-width: 500px) {

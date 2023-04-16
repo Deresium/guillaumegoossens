@@ -37,8 +37,7 @@
                 couleurs de notre époque «Notre seule issue», «Ce qui manque» et «Citoyen inconnu» et fait appel à
                 l'essentiel.</p>
 
-            <p>Commence alors la rédaction d'un nouvel album baptisé «Tout dépendra» qui sortira en décembre
-                2022.</p>
+            <p>Commence alors la rédaction d'un nouvel album baptisé «Tout dépendra» qui sortira le 5 mai 2023.</p>
 
             <div class="imgSection">
                 <div class="paragraphSection">
