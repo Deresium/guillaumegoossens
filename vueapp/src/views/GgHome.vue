@@ -1,7 +1,9 @@
 <template>
     <div class="home">
         <div class="topTitle">
-            <img class="guillaumePic" src="../assets/guillaume_goossens_home.jpg" alt="Guillaume"/>
+            <div class="imgWrapper">
+                <img class="guillaumePic" src="../assets/guillaume_goossens_home.jpg" alt="Guillaume"/>
+            </div>
             <h1>Guillaume Goossens</h1>
         </div>
 
@@ -24,7 +26,7 @@
 </script>
 
 <style scoped>
-.home{
+.home {
     margin-bottom: 30px;
     margin-top: 30px;
 }
@@ -39,9 +41,16 @@
 
 .guillaumePic {
     width: 95%;
+    animation: zoommingInOut 10s infinite;
 }
 
-h1{
+.imgWrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+h1 {
     color: white;
     font-family: 'Merriweather', serif;
     font-weight: bold;
@@ -51,7 +60,7 @@ h1{
     font-size: 30px;
 }
 
-.leftColumn h1{
+.leftColumn h1 {
     display: none;
 }
 
@@ -96,37 +105,49 @@ h1{
     background-color: rgba(255, 255, 255, .8);
 }
 
+@keyframes zoommingInOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 @media (min-width: 500px) {
     .topTitle h1 {
         font-size: 45px;
     }
 }
 
-@media(min-width: 730px){
-    .topTitle h1{
+@media (min-width: 730px) {
+    .topTitle h1 {
         font-size: 70px;
     }
 
-    .guillaumePic{
+    .guillaumePic {
         width: 75%;
     }
 
-    .quote{
+    .quote {
         font-size: x-large;
     }
 }
 
 @media (min-width: 1400px) {
-    .topTitle h1{
+    .topTitle h1 {
         display: none;
     }
 
-    .leftColumn h1{
+    .leftColumn h1 {
         display: block;
         text-align: center;
     }
 
-    .home{
+    .home {
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
@@ -134,39 +155,39 @@ h1{
     }
 
     .guillaumePic {
-        width: 70%;
+        width: 60%;
     }
 
-    .leftColumn{
+    .leftColumn {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         box-sizing: border-box;
         border-left: 30px solid #242424;
-        width: 30%;
+        width: 40%;
         padding-left: 100px;
     }
 
-    h1{
+    h1 {
         font-size: 85px;
     }
 
-    .quote{
+    .quote {
         align-items: flex-start;
         font-size: x-large;
     }
 
-    .actionButtons{
+    .actionButtons {
         flex-direction: row;
         align-items: flex-start;
     }
 
-    .actionButtons a{
+    .actionButtons a {
         font-size: x-large;
     }
 
-    .actionButtons a:first-child{
+    .actionButtons a:first-child {
         margin-right: 30px;
     }
 }

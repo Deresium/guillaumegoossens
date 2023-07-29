@@ -7,13 +7,8 @@
                     <img class="imgEvent" v-if="event.getPicture()" :src="getImageSrc(event.getEventId())"
                          alt="img event"/>
                     <div class="eventContent">
-                        <div class="icon">
-                            <img v-if="event.isConcert()" src="../assets/icons/ticket.svg" alt="ticket image"/>
-                            <img v-if="!event.isConcert()" src="../assets/icons/album.svg" alt="album image"/>
-                        </div>
                         <div class="infosEvent">
-                            <p class="label">{{ event.getLabel() }}</p>
-                            <p class="date">{{ d(event.getDate()) }}</p>
+                            <p class="label">{{ event.getLabel() }} - {{ d(event.getDate()) }}</p>
                             <p v-if="event.getDescription()">{{ event.getDescription() }}</p>
                             <p v-if="event.affichAddress()" class="address">{{ event.affichAddress() }}</p>
                             <p v-if="event.getWebsite()" class="website">
@@ -106,8 +101,8 @@ const getImageSrc = (eventId: number) => {
 }
 
 .imgEvent {
-    width: 100%;
-    max-width: 300px;
+    max-height: 90%;
+    max-width: 90%;
     position: absolute;
     z-index: -1;
     top: 50%;

@@ -12,14 +12,14 @@
 <style scoped>
 footer{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-color: #242424;
 }
 
-footer p{
-    margin-left: 20px;
+p{
+    margin: 0;
 }
 </style>

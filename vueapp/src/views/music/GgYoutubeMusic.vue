@@ -91,6 +91,10 @@
     position: absolute;
 }
 
+h2{
+    text-align: center;
+}
+
 .video{
     margin-bottom: 100px;
 }
