@@ -2,7 +2,7 @@
     <div class="withMargin">
         <h1>Artiste</h1>
         <div class="bio">
-            <p class="firstP">Issu de la culture Rock Folk et Blues, multi instrumentiste, il éveille les consciences
+            <p class="firstP">Issu de la culture Rock Folk, il éveille les consciences
                 avec ses textes
                 profonds et riches de sens, le tout, dans un style simple, authentique et spontané.</p>
 
@@ -31,13 +31,25 @@
                 </div>
             </div>
 
-            <p>C'est dans les innombrables chaos que naissent les plus aimables des formes. En 2021 sortent des
-                titres
-                aux
-                couleurs de notre époque «Notre seule issue», «Ce qui manque» et «Citoyen inconnu» et fait appel à
+            <p>"C'est dans les innombrables chaos que naissent les plus aimables des formes". En 2021 sortent des
+                titres aux couleurs d'une sombre époque «Notre seule issue», «Ce qui manque» et «Citoyen inconnu» et fait appel à
                 l'essentiel.</p>
 
-            <p>Commence alors la rédaction d'un nouvel album baptisé «Tout dépendra» qui sortira le 5 mai 2023.</p>
+            <p>Commence alors la rédaction d'un nouvel album baptisé «Tout dépendra» sorti le 5 mai 2023.</p>
+
+            <div class="imgSection">
+                <img class="imgBio" src="../assets/pochette_album.jpg" alt="pochette album"/>
+                <div class="paragraphSection">
+                    <p>Si "C'est à toi" illustre le concept de perception, "Tout dépendra" en est la suite logique en ajoutant les notions de dualité et d'impermamence.</p>
+                    <p>L'album est constitué de 13 titres dans un style plus rock que le précédent et les thèmes abordés sont ici plus universel.</p>
+                    <p>Tout dépendra incite à la réflexion et nous invite à accueillir notre réalité.</p>
+                    <p>Ce nouvel album est également le moment d'inclure quelques anciennes chansons, telles que:</p>
+                    <p>- Ce qui manque: sortie en février 2021 accompagnée du clip.</p>
+                    <p>- Le fil de la vie: véritable point de départ du projet.</p>
+                    <p>- Les regrets: reliquat du groupe Ex Vivo revisitée en version Piano/voix. La chanson sert un second clip sorti en avril 2023</p>
+                    <p>"Ce que c'était, ce que sera<br/>Tout dépendra"</p>
+                </div>
+            </div>
 
             <div class="imgSection">
                 <div class="paragraphSection">

@@ -10,8 +10,8 @@
             <GgLogoSmall/>
             <div class="menuLinks">
                 <router-link :to="{name: 'artist'}">Artiste</router-link>
-                <router-link :to="{name: 'diary'}">Actualité</router-link>
                 <router-link :to="{name: 'spotifyMusic'}">Musique</router-link>
+                <router-link :to="{name: 'diary'}">Actualité</router-link>
                 <router-link :to="{name: 'gallery'}">Galerie</router-link>
                 <router-link :to="{name: 'contact'}">Contact</router-link>
             </div>
