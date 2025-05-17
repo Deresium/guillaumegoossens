@@ -1,14 +1,26 @@
 <template>
     <div class="videos">
         <div class="video">
+            <h2>Clair de Lune</h2>
+            <div class="iframeVideo">
+                <iframe
+                    src="https://www.youtube.com/watch?v=3zAMnO6X2c4&ab_channel=GuillaumeGoossensMusique"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                />
+            </div>
+        </div>
+        <div class="video">
             <h2>Les regrets</h2>
             <div class="iframeVideo">
                 <iframe
-                        src="https://www.youtube.com/embed/5CAeUNKOMdY"
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
+                    src="https://www.youtube.com/embed/5CAeUNKOMdY"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
                 />
             </div>
         </div>
@@ -91,22 +103,22 @@
     position: absolute;
 }
 
-h2{
+h2 {
     text-align: center;
 }
 
-.video{
+.video {
     margin-bottom: 100px;
 }
 
-@media(min-width: 900px){
-    .videos{
+@media (min-width: 900px) {
+    .videos {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
 
-    .video{
+    .video {
         width: 45%;
     }
 }
