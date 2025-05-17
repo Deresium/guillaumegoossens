@@ -3,13 +3,10 @@
         <div class="video">
             <h2>Clair de Lune</h2>
             <div class="iframeVideo">
-                <iframe
-                    src="https://www.youtube.com/watch?v=3zAMnO6X2c4&ab_channel=GuillaumeGoossensMusique"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                />
+                <iframe src="https://www.youtube.com/embed/3zAMnO6X2c4?si=MIBMPI-VfqbEdzdG"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
             </div>
         </div>
         <div class="video">
